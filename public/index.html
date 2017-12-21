@@ -14,9 +14,22 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>MyReads</title>
+    <title>Meu livros</title>
+    <link rel="stylesheet" href="styles/loading.css">
   </head>
   <body>
+    <!-- Loading -->
+    <div class="ipl-progress-indicator" id="ipl-progress-indicator">
+      <div class="ipl-progress-indicator-head">
+        <div class="first-indicator"></div>
+        <div class="second-indicator"></div>
+      </div>
+      <div class="insp-logo-frame">
+          <img src="/images/logo.png" alt="" class="logo" />
+      </div>
+    </div>
+
+    <!-- APP -->
     <div id="root"></div>
     <!--
       This HTML file is a template.

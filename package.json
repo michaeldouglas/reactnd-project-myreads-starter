@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "4.0.0-beta.2",
     "node-sass": "^4.7.2",
     "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "reactstrap": "^5.0.0-alpha.4",
     "sass-loader": "^6.0.6"
   },
   "devDependencies": {

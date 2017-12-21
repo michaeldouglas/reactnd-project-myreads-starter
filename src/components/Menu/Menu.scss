@@ -1,0 +1,22 @@
+/* variables */
+@import "../variables";
+
+.list-books-title {
+    margin-bottom: 1.3em;
+    background: $LIST_BOOKS_TITLE;
+    text-align: center;
+
+    #navbar-center {
+        &.navbar-default {
+            background: linear-gradient(to right, #d4f2d2, #d4f2d2);
+            border-color: linear-gradient(to right, #d4f2d2, #d4f2d2);
+        }
+        .navbar-brand {
+            img {
+                max-height: 3em;
+                min-height: 3em;
+            }
+        }
+    }
+}
+
