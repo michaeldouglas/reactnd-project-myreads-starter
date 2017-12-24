@@ -7,7 +7,8 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^5.0.0-alpha.4",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",

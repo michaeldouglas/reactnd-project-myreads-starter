@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../../BooksAPI'
 import Menu from '../Menu/Menu'
 import CurrentlyReading from '../CurrentlyReading/CurrentlyReading'
 import WantToRead from '../WantToRead/WantToRead'
@@ -9,22 +9,31 @@ import './App.scss'
 
 class BooksApp extends React.Component { 
   state = {
-    showSearchPage: false
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
   }
 
   componentDidMount(){
     const ele = document.getElementById('ipl-progress-indicator')
-    if(ele){
-      setTimeout(() => {
-        ele.classList.add('available')
-        setTimeout(() => {
-          ele.outerHTML = ''
-        }, 2000)
-      }, 1000)
-    }
+
+    BooksAPI.getAll().then(books => {
+      this.setState({ books });
+      
+      this.setState({
+        currentlyReading: books.filter((currentlyReading) => currentlyReading.shelf === "currentlyReading"),
+        wantToRead: books.filter((wantToRead) => wantToRead.shelf === "wantToRead"),
+        read: books.filter((read) => read.shelf === "read")
+      })
+      
+      //Remove Loading
+      ele.classList.add("available");
+    });
   }
 
   render() {
+    const books = this.state
+    
     return (
       <div className="app">
         
@@ -35,19 +44,19 @@ class BooksApp extends React.Component {
             
             {/* Currently Reading */}
             <Route exact path="/" render={() => (
-              <CurrentlyReading />
+              <CurrentlyReading currently={books.currentlyReading} />
             )}/>
 
             <Route exact path="/lendo-atualmente" render={() => (
-              <CurrentlyReading />
+              <CurrentlyReading currently={books.currentlyReading} />
             )}/>
 
             <Route exact path="/quero-ler" render={() => (
-              <WantToRead />
+              <WantToRead wantToRead={books.wantToRead} />
             )}/>
 
             <Route exact path="/eu-ja-li" render={() => (
-              <Read />
+              <Read read={books.read} />
             )}/>
 
           </div>
