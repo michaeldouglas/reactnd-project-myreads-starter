@@ -39,6 +39,11 @@ body {
     -moz-animation: fadein 436ms;
     animation: fadein 436ms;
     height: 98%;
+    text-align: center;
+}
+.insp-logo-frame p {
+    font-size: 2em;
+    color: #d1cccc;
 }
 .insp-logo-frame-img {
     width: 112px;

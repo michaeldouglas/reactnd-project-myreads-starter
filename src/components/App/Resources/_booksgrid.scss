@@ -20,12 +20,18 @@
   .book-title,
   .book-authors {
     font-size: 0.8em;
+    color: #999;
+    font-weight: bold;
+
+    p {
+      margin-top: 0.1rem;
+      margin-bottom: 0rem;
+      font-weight: normal;
+      font-style: oblique;
+    }
   }
   .book-title {
     margin-top: 10px;
-  }
-  .book-authors {
-    color: #999;
   }
   
   .book-top {

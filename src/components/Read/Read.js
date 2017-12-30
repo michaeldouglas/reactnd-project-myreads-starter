@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 
 export default class Read extends Component {
+
+  state = {
+    value: ''
+  }
+
   render() {
-    const { read } = this.props
+    const { read, onUpdateBook } = this.props
 
     return (
       <div>
@@ -23,22 +28,19 @@ export default class Read extends Component {
                       </div>
                       {/* Changer */}
                       <div className="book-shelf-changer">
-                        <select>
-                          <option value="none" disabled>
-                            Move to...
-                          </option>
-                          <option value="currentlyReading">
-                            Currently Reading
-                          </option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none">None</option>
+                        <select onChange={(event) => onUpdateBook(event.target.value, data)} value={this.state.value}>
+                          <option value="none" disabled>Move to...</option>
+                          <option value="read">Eu já li</option>
+                          <option value="currentlyReading">Lendo atualmente</option>
+                          <option value="wantToRead">Quero ler</option>
                         </select>
                       </div>
                     </div>
                     {/* Title\Authors */}
-                    <div className="book-title">To Kill a Mockingbird</div>
-                    <div className="book-authors">Harper Lee</div>
+                    <div className="book-title">{data.title}</div>
+                    <div className="book-authors">{data.authors.map((author) => (
+                      <p key={author}>{author}</p>
+                    ))}</div>
                   </div>
                 </li>
               ) 
