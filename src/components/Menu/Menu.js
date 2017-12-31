@@ -33,7 +33,7 @@ export default class Menu extends Component {
                 <Navbar id="navbar-center" color="faded" light expand="md" className="navbar navbar-default navbar-fixed-top list-books-titl">
                 
                     <Link to="/" className="navbar-brand">
-                        <img src={logo} alt="" className="img-responsive" /> Meu livros
+                        <img src={logo} alt="" className="img-responsive" /> My Books
                     </Link>
 
                     <NavbarToggler onClick={this.toggle} />

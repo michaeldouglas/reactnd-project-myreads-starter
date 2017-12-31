@@ -7,9 +7,7 @@ export default class SearchPage extends Component {
 
     state = {
         query: '',
-        value: '',
-        books: [],
-        notFound: false
+        books: []
     }
 
     updateQuery = (query, bookSearch) => {
@@ -22,10 +20,19 @@ export default class SearchPage extends Component {
                 
                 if (books.error) {
                     books = []
-                    this.setState({ notFound: true })
-                } 
-                
-                books.map(book => (bookSearch.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
+                }
+
+                books.map(result => {
+                    // Set default shelf to none.
+                    result.shelf = 'none'
+                    bookSearch.forEach(myBook => {
+                      // Update shelf as needed.
+                      if(result.id === myBook.id){
+                        result.shelf = myBook.shelf
+                      } 
+                    })
+                    return result
+                })
                 
                 this.setState({ books })
             });
@@ -34,7 +41,7 @@ export default class SearchPage extends Component {
 
     render() {
         const { bookSearch, onUpdateBook } = this.props
-        const { query, value, books, notFound } = this.state
+        const { query, books } = this.state
 
         return (
             <div>
@@ -57,9 +64,13 @@ export default class SearchPage extends Component {
                     </div>
                 </div>
 
-                {notFound &&
+                {books == 0 && query && (
+                    <h2 className="not-found">Sorry, no results matching that title <strong>( {query} )</strong>. ¯\_(ツ)_/¯</h2>
+                )}
+
+                {books.length > 0 &&
                     <h2 className="not-found">
-                      Not found <strong>( {query} )</strong> in books ¯\_(ツ)_/¯
+                        Total books found <strong>( {books.length} )</strong> with the term <strong>( {query} )</strong>
                     </h2>
                 }
 
@@ -80,7 +91,7 @@ export default class SearchPage extends Component {
                                         {/* Changer */}
                                         <div className="book-shelf-changer">
                                             <select onChange={(event) =>
-                                                onUpdateBook(event.target.value, book)} value={value}>
+                                                onUpdateBook(event.target.value, book)} value={book.shelf}>
                                                 <option value="none" disabled>Move to...</option>
                                                 <option value="read">Eu já li</option>
                                                 <option value="currentlyReading">Lendo atualmente</option>
