@@ -12,7 +12,7 @@ export default class WantToRead extends Component {
     return (
       <div>
         <div className="bookshelf">
-          <h2 className="bookshelf-title">Lendo atualmente</h2>
+          <h2 className="bookshelf-title">Currently reading</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
             {wantToRead.map((data) => (
@@ -30,9 +30,9 @@ export default class WantToRead extends Component {
                       <div className="book-shelf-changer">
                           <select onChange={(event) => onUpdateBook(event.target.value, data)} value={this.state.value}>
                           <option value="none" disabled>Move to...</option>
-                          <option value="wantToRead">Quero ler</option>
-                          <option value="currentlyReading">Lendo atualmente</option>
-                          <option value="read">Eu já li</option>
+                          <option value="wantToRead">Want to read</option>
+                          <option value="currentlyReading">Currently reading</option>
+                          <option value="read">Read</option>
                         </select>
                       </div>
                     </div>

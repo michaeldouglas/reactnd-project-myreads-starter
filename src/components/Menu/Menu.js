@@ -41,13 +41,13 @@ export default class Menu extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <Link className="nav-link" to="/lendo-atualmente" >Lendo atualmente</Link>
+                            <Link className="nav-link" to="/lendo-atualmente" >Currently reading</Link>
                         </NavItem>
                         <NavItem>
-                            <Link className="nav-link" to="/quero-ler" >Quero Ler</Link>
+                            <Link className="nav-link" to="/quero-ler" >Want to read</Link>
                         </NavItem>
                         <NavItem>
-                            <Link className="nav-link" to="/eu-ja-li" >Eu já li</Link>
+                            <Link className="nav-link" to="/eu-ja-li" >Read</Link>
                         </NavItem>
                         </Nav>
                     </Collapse>

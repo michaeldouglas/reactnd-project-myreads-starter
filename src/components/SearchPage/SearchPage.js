@@ -23,10 +23,8 @@ export default class SearchPage extends Component {
                 }
 
                 books.map(result => {
-                    // Set default shelf to none.
                     result.shelf = 'none'
                     bookSearch.forEach(myBook => {
-                      // Update shelf as needed.
                       if(result.id === myBook.id){
                         result.shelf = myBook.shelf
                       } 
@@ -64,7 +62,7 @@ export default class SearchPage extends Component {
                     </div>
                 </div>
 
-                {books == 0 && query && (
+                {books === 0 && query && (
                     <h2 className="not-found">Sorry, no results matching that title <strong>( {query} )</strong>. ¯\_(ツ)_/¯</h2>
                 )}
 
@@ -93,9 +91,9 @@ export default class SearchPage extends Component {
                                             <select onChange={(event) =>
                                                 onUpdateBook(event.target.value, book)} value={book.shelf}>
                                                 <option value="none" disabled>Move to...</option>
-                                                <option value="read">Eu já li</option>
-                                                <option value="currentlyReading">Lendo atualmente</option>
-                                                <option value="wantToRead">Quero ler</option>
+                                                <option value="read">Read</option>
+                                                <option value="currentlyReading">Currently reading</option>
+                                                <option value="wantToRead">Want to read</option>
                                             </select>
                                         </div>
                                     </div>
