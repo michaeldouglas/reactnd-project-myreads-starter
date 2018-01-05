@@ -81,11 +81,19 @@ export default class SearchPage extends Component {
                                     <div className="book-top">
                                         {/* Image */}
                                         <div className="book-cover">
-                                            <img style={{
-                                            width: 128,
-                                            height: 193
-                                            }} src={book.imageLinks.thumbnail} alt={book.title}/>
+                                            {(!book.imageLinks ? 
+                                                <img style={{
+                                                        width: 128,
+                                                        height: 193
+                                                }} src="https://www.mustangsplus.com/image.php?type=P&id=11762" alt={book.title}/>
+                                                :
+                                                <img style={{
+                                                        width: 128,
+                                                        height: 193
+                                                }} src={book.imageLinks.thumbnail} alt={book.title}/>
+                                            )}
                                         </div>
+
                                         {/* Changer */}
                                         <div className="book-shelf-changer">
                                             <select onChange={(event) =>
@@ -97,14 +105,13 @@ export default class SearchPage extends Component {
                                             </select>
                                         </div>
                                     </div>
-                                    {/* Title\Authors */}
+                                    {/* Title/Authors */}
                                     <div className="book-title">{book.title}</div>
-                                        <div className="book-authors">{(!book.authors ? '' : 
-                                            book.authors.map((author) => (
-                                                <p key={author}>{author}</p>
-                                            )))
-                                        }
-                                        </div>
+                                    <div className="book-authors">{(!book.authors ? '' : 
+                                        book.authors.map((author) => (
+                                            <p key={author}>{author}</p>
+                                        )))}
+                                    </div>
                                     </div>
                                 </li>
                             ) 

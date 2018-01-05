@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import * as BooksAPI from '../../BooksAPI'
 import Menu from '../Menu/Menu'
-import CurrentlyReading from '../CurrentlyReading/CurrentlyReading'
-import WantToRead from '../WantToRead/WantToRead'
-import Read from '../Read/Read'
+import Shelf from '../Shelf/Shelf'
 import SearchPage from '../SearchPage/SearchPage'
 import './App.scss'
 
@@ -69,34 +67,56 @@ class BooksApp extends Component {
             
             {/* Currently Reading */}
             <Route exact path="/" render={() => (
-              <CurrentlyReading
-                onUpdateBook={this.updateBook}
-                currently={books.currentlyReading} 
-              />
+              <div>
+                <Shelf
+                  title="Currently reading"
+                  onUpdateBook={this.updateBook}
+                  listOfBooks={books.currentlyReading}
+                  shelf="currentlyReading"
+                />
+                <Shelf
+                  title="Want to read"
+                  onUpdateBook={this.updateBook}
+                  listOfBooks={books.wantToRead}
+                  shelf="wantToRead"
+                />
+                <Shelf
+                  title="Read"
+                  onUpdateBook={this.updateBook}
+                  listOfBooks={books.read}
+                  shelf="read"
+                />
+              </div>
             )}/>
 
             <Route exact path="/lendo-atualmente" render={() => (
-              <CurrentlyReading
+              <Shelf
+                title="Currently reading"
                 onUpdateBook={this.updateBook}
-                currently={books.currentlyReading} 
+                listOfBooks={books.currentlyReading}
+                shelf="currentlyReading"
               />
             )}/>
 
             <Route exact path="/quero-ler" render={() => (
-              <WantToRead 
+              <Shelf
+                title="Want to read"
                 onUpdateBook={this.updateBook}
-                wantToRead={books.wantToRead}
+                listOfBooks={books.wantToRead}
+                shelf="wantToRead"
               />
             )}/>
 
             <Route exact path="/eu-ja-li" render={() => (
-              <Read 
+              <Shelf
+                title="Read"
                 onUpdateBook={this.updateBook}
-                read={books.read} 
+                listOfBooks={books.read}
+                shelf="read"
               />
             )}/>
 
-            <Route exact path="/search-page" render={() => (
+            <Route exact path="/search" render={() => (
               <SearchPage 
                 onUpdateBook={this.updateBook}
                 bookSearch={books.bookSearch}
@@ -107,7 +127,7 @@ class BooksApp extends Component {
         </div>
 
         <div className="open-search">
-          <Link to="/search-page">Add a book</Link>
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     )
